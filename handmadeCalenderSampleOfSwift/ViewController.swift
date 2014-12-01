@@ -26,7 +26,6 @@ class ViewController: UIViewController {
     var dayOfWeek: Int!
     
     //メンバ変数の設定（カレンダー関数から取得したものを渡す）
-    var flags: NSInteger!
     var comps: NSDateComponents!
     
     //メンバ変数の設定（カレンダーの背景色）
