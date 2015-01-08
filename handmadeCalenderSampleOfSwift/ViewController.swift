@@ -36,13 +36,117 @@ class ViewController: UIViewController {
     @IBOutlet var prevMonthButton: UIButton!
     @IBOutlet var nextMonthButton: UIButton!
     
+    //カレンダーの位置決め用メンバ変数
+    var calendarLabelIntervalX: Int!
+    var calendarLabelX: Int!
+    var calendarLabelY: Int!
+    var calendarLabelWidth: Int!
+    var calendarLabelHeight: Int!
+    var calendarLableFontSize: Int!
+    
+    var buttonRadius: Float!
+    
+    var calendarIntervalX: Int!
+    var calendarX: Int!
+    var calendarIntervalY: Int!
+    var calendarY: Int!
+    var calendarSize: Int!
+    var calendarFontSize: Int!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        //現在起動中のデバイスを取得（スクリーンの幅・高さ）
+        let screenWidth = Int(UIScreen.mainScreen().bounds.size.width)
+        let screenHeight = Int(UIScreen.mainScreen().bounds.size.height)
+        
+        //iPhone4s
+        if(screenWidth == 320 && screenHeight == 480){
+            
+            calendarLabelIntervalX = 5;
+            calendarLabelX         = 45;
+            calendarLabelY         = 93;
+            calendarLabelWidth     = 40;
+            calendarLabelHeight    = 25;
+            calendarLableFontSize  = 14;
+            
+            buttonRadius           = 20.0;
+            
+            calendarIntervalX      = 5;
+            calendarX              = 45;
+            calendarIntervalY      = 120;
+            calendarY              = 45;
+            calendarSize           = 40;
+            calendarFontSize       = 17;
+            
+        //iPhone5またはiPhone5s
+        }else if (screenWidth == 320 && screenHeight == 568){
+            
+            calendarLabelIntervalX = 5;
+            calendarLabelX         = 45;
+            calendarLabelY         = 93;
+            calendarLabelWidth     = 40;
+            calendarLabelHeight    = 25;
+            calendarLableFontSize  = 14;
+            
+            buttonRadius           = 20.0;
+            
+            calendarIntervalX      = 5;
+            calendarX              = 45;
+            calendarIntervalY      = 120;
+            calendarY              = 45;
+            calendarSize           = 40;
+            calendarFontSize       = 17;
+            
+        //iPhone6
+        }else if (screenWidth == 375 && screenHeight == 667){
+            
+            calendarLabelIntervalX = 15;
+            calendarLabelX         = 50;
+            calendarLabelY         = 95;
+            calendarLabelWidth     = 45;
+            calendarLabelHeight    = 25;
+            calendarLableFontSize  = 16;
+            
+            buttonRadius           = 22.5;
+            
+            calendarIntervalX      = 15;
+            calendarX              = 50;
+            calendarIntervalY      = 125;
+            calendarY              = 50;
+            calendarSize           = 45;
+            calendarFontSize       = 19;
+            
+            self.prevMonthButton.frame = CGRectMake(15, 438, CGFloat(calendarSize), CGFloat(calendarSize));
+            self.nextMonthButton.frame = CGRectMake(314, 438, CGFloat(calendarSize), CGFloat(calendarSize));
+            
+        //iPhone6 plus
+        }else if (screenWidth == 414 && screenHeight == 736){
+            
+            calendarLabelIntervalX = 15;
+            calendarLabelX         = 55;
+            calendarLabelY         = 95;
+            calendarLabelWidth     = 55;
+            calendarLabelHeight    = 25;
+            calendarLableFontSize  = 18;
+            
+            buttonRadius           = 25;
+            
+            calendarIntervalX      = 18;
+            calendarX              = 55;
+            calendarIntervalY      = 125;
+            calendarY              = 55;
+            calendarSize           = 50;
+            calendarFontSize       = 21;
+            
+            self.prevMonthButton.frame = CGRectMake(18, 468, CGFloat(calendarSize), CGFloat(calendarSize));
+            self.nextMonthButton.frame = CGRectMake(348, 468, CGFloat(calendarSize), CGFloat(calendarSize));
+        }
+        
         //ボタンを角丸にする
-        prevMonthButton.layer.cornerRadius = 5.0
-        nextMonthButton.layer.cornerRadius = 5.0
+        prevMonthButton.layer.cornerRadius = CGFloat(buttonRadius)
+        nextMonthButton.layer.cornerRadius = CGFloat(buttonRadius)
         
         //現在の日付を取得する
         now = NSDate()
@@ -91,7 +195,12 @@ class ViewController: UIViewController {
             var calendarBaseLabel: UILabel = UILabel()
             
             //X座標の値をCGFloat型へ変換して設定
-            calendarBaseLabel.frame = CGRectMake(CGFloat(15 + 50 * (i % calendarLabelCount)), 50, 45, 25)
+            calendarBaseLabel.frame = CGRectMake(
+                CGFloat(calendarLabelIntervalX + calendarLabelX * (i % calendarLabelCount)),
+                CGFloat(calendarLabelY),
+                CGFloat(calendarLabelWidth),
+                CGFloat(calendarLabelHeight)
+            )
             
             //日曜日の場合は赤色を指定
             if(i == 0){
@@ -120,7 +229,7 @@ class ViewController: UIViewController {
             //曜日ラベルの配置
             calendarBaseLabel.text = String(array[i] as NSString)
             calendarBaseLabel.textAlignment = NSTextAlignment.Center
-            calendarBaseLabel.font = UIFont(name: "System", size: CGFloat(16))
+            calendarBaseLabel.font = UIFont(name: "System", size: CGFloat(calendarLableFontSize))
             self.view.addSubview(calendarBaseLabel)
         }
     }
@@ -136,10 +245,10 @@ class ViewController: UIViewController {
         for i in 0...41{
             
             //配置場所の定義
-            var positionX   = 15 + 50 * (i % 7);
-            var positionY   = 80 + 50 * (i / 7);
-            var buttonSizeX = 45;
-            var buttonSizeY = 45;
+            var positionX   = calendarIntervalX + calendarX * (i % 7)
+            var positionY   = calendarIntervalY + calendarY * (i / 7)
+            var buttonSizeX = calendarSize;
+            var buttonSizeY = calendarSize;
             
             //ボタンをつくる
             var button: UIButton = UIButton()
@@ -189,8 +298,8 @@ class ViewController: UIViewController {
             //ボタンのデザインを決定する
             button.backgroundColor = calendarBackGroundColor
             button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            button.titleLabel!.font = UIFont(name: "System", size: CGFloat(19))
-            button.layer.cornerRadius = 22.5
+            button.titleLabel!.font = UIFont(name: "System", size: CGFloat(calendarFontSize))
+            button.layer.cornerRadius = CGFloat(buttonRadius)
             
             //配置したボタンに押した際のアクションを設定する
             button.addTarget(self, action: "buttonTapped:", forControlEvents: .TouchUpInside)

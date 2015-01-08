@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E120FFFD-65F4-46A0-9ACA-5327C39C7A66</string>
+	<key>IDESourceControlProjectName</key>
+	<string>handmadeCalenderSampleOfSwift</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0784272B582DD7C353AFC4D6B74399F3253BDF1D</key>
+		<string>github.com:fumiyasac/handMadeCalendarOfSwift.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>handmadeCalenderSampleOfSwift.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0784272B582DD7C353AFC4D6B74399F3253BDF1D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:fumiyasac/handMadeCalendarOfSwift.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0784272B582DD7C353AFC4D6B74399F3253BDF1D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0784272B582DD7C353AFC4D6B74399F3253BDF1D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>handmadeCalenderSampleOfSwift</string>
+		</dict>
+	</array>
+</dict>
+</plist>

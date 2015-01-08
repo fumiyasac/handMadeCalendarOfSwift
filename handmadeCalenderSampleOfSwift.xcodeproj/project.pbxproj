@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE3BE56F1A5EDA2800C49B3C /* DeviseSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3BE56E1A5EDA2700C49B3C /* DeviseSize.swift */; };
 		DEA4E48F1A2B03F100601B26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA4E48E1A2B03F100601B26 /* QuartzCore.framework */; };
 		DEA538A31A2A0AE30092DCBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA538A21A2A0AE30092DCBA /* AppDelegate.swift */; };
 		DEA538A51A2A0AE30092DCBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA538A41A2A0AE30092DCBA /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE3BE56E1A5EDA2700C49B3C /* DeviseSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviseSize.swift; sourceTree = "<group>"; };
 		DEA4E48E1A2B03F100601B26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DEA5389D1A2A0AE30092DCBA /* handmadeCalenderSampleOfSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = handmadeCalenderSampleOfSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEA538A11A2A0AE30092DCBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				DEA538A21A2A0AE30092DCBA /* AppDelegate.swift */,
+				DE3BE56E1A5EDA2700C49B3C /* DeviseSize.swift */,
 				DEA538A41A2A0AE30092DCBA /* ViewController.swift */,
 				DEA538A61A2A0AE40092DCBA /* Main.storyboard */,
 				DEA538A91A2A0AE40092DCBA /* Images.xcassets */,
@@ -218,6 +221,7 @@
 			files = (
 				DEA538A51A2A0AE30092DCBA /* ViewController.swift in Sources */,
 				DEA538A31A2A0AE30092DCBA /* AppDelegate.swift in Sources */,
+				DE3BE56F1A5EDA2800C49B3C /* DeviseSize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
