@@ -58,8 +58,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //現在起動中のデバイスを取得（スクリーンの幅・高さ）
-        let screenWidth = Int(UIScreen.mainScreen().bounds.size.width)
-        let screenHeight = Int(UIScreen.mainScreen().bounds.size.height)
+        let screenWidth  = DeviseSize.screenWidth()
+        let screenHeight = DeviseSize.screenHeight()
         
         //iPhone4s
         if(screenWidth == 320 && screenHeight == 480){
