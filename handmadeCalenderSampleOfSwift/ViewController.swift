@@ -227,7 +227,7 @@ class ViewController: UIViewController {
             }
             
             //曜日ラベルの配置
-            calendarBaseLabel.text = String(array[i] as NSString)
+            calendarBaseLabel.text = String(array[i] as! NSString)
             calendarBaseLabel.textAlignment = NSTextAlignment.Center
             calendarBaseLabel.font = UIFont(name: "System", size: CGFloat(calendarLableFontSize))
             self.view.addSubview(calendarBaseLabel)
@@ -422,33 +422,6 @@ class ViewController: UIViewController {
         setupCurrentCalendarData()
         generateCalendar()
         setupCalendarTitleLabel()
-        
-        //コンソール表示
-        println("カレンダーが表示されました！")
-    }
-    
-    //前の月のボタンを押した際のアクション
-    @IBAction func getPrevMonthData(sender: UIButton) {
-        
-        removeCalendarButtonObject()
-        setupPrevCalendarData()
-        generateCalendar()
-        setupCalendarTitleLabel()
-        
-        //コンソール表示
-        println("前の月のボタンが押されました！")
-    }
-    
-    //次の月のボタンを押した際のアクション
-    @IBAction func getNextMonthData(sender: UIButton) {
-        
-        removeCalendarButtonObject()
-        setupNextCalendarData()
-        generateCalendar()
-        setupCalendarTitleLabel()
-        
-        //コンソール表示
-        println("次の月のボタンが押されました！")
     }
     
     //カレンダーボタンをタップした時のアクション
@@ -458,6 +431,42 @@ class ViewController: UIViewController {
         
         //コンソール表示
         println("\(year)年\(month)月\(button.tag)日が選択されました！")
+    }
+    
+    //前の月のボタンを押した際のアクション
+    @IBAction func getPrevMonthData(sender: UIButton) {
+        prevCalendarSettings()
+    }
+    
+    //次の月のボタンを押した際のアクション
+    @IBAction func getNextMonthData(sender: UIButton) {
+        nextCalendarSettings()
+    }
+    
+    //左スワイプで前月を表示
+    @IBAction func swipePrevCalendar(sender: UISwipeGestureRecognizer) {
+        prevCalendarSettings()
+    }
+    
+    //右スワイプで次月を表示
+    @IBAction func swipeNextCalendar(sender: UISwipeGestureRecognizer) {
+        nextCalendarSettings()
+    }
+    
+    //前月を表示するメソッド
+    func prevCalendarSettings() {
+        removeCalendarButtonObject()
+        setupPrevCalendarData()
+        generateCalendar()
+        setupCalendarTitleLabel()
+    }
+    
+    //次月を表示するメソッド
+    func nextCalendarSettings() {
+        removeCalendarButtonObject()
+        setupNextCalendarData()
+        generateCalendar()
+        setupCalendarTitleLabel()
     }
     
     override func didReceiveMemoryWarning() {
