@@ -152,18 +152,18 @@ class ViewController: UIViewController {
         now = NSDate()
         
         //inUnit:で指定した単位（月）の中で、rangeOfUnit:で指定した単位（日）が取り得る範囲
-        var calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        var range: NSRange = calendar.rangeOfUnit(NSCalendarUnit.CalendarUnitDay, inUnit:NSCalendarUnit.CalendarUnitMonth, forDate:now)
+        let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let range: NSRange = calendar.rangeOfUnit(NSCalendarUnit.Day, inUnit:NSCalendarUnit.Month, forDate:now)
         
         //最初にメンバ変数に格納するための現在日付の情報を取得する
-        comps = calendar.components(NSCalendarUnit.CalendarUnitYear|NSCalendarUnit.CalendarUnitMonth|NSCalendarUnit.CalendarUnitDay|NSCalendarUnit.CalendarUnitWeekday,fromDate:now)
+        comps = calendar.components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Weekday],fromDate:now)
         
         //年月日と最後の日付と曜日を取得(NSIntegerをintへのキャスト不要)
-        var orgYear: NSInteger      = comps.year
-        var orgMonth: NSInteger     = comps.month
-        var orgDay: NSInteger       = comps.day
-        var orgDayOfWeek: NSInteger = comps.weekday
-        var max: NSInteger          = range.length
+        let orgYear: NSInteger      = comps.year
+        let orgMonth: NSInteger     = comps.month
+        let orgDay: NSInteger       = comps.day
+        let orgDayOfWeek: NSInteger = comps.weekday
+        let max: NSInteger          = range.length
         
         year      = orgYear
         month     = orgMonth
@@ -175,7 +175,7 @@ class ViewController: UIViewController {
         mArray = NSMutableArray()
         
         //曜日ラベル初期定義
-        var monthName:[String] = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+        let monthName:[String] = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
         
         //曜日ラベルを動的に配置
         setupCalendarLabel(monthName)
@@ -187,12 +187,12 @@ class ViewController: UIViewController {
     //曜日ラベルの動的配置関数
     func setupCalendarLabel(array: NSArray) {
         
-        var calendarLabelCount = 7
+        let calendarLabelCount = 7
         
         for i in 0...6{
             
             //ラベルを作成
-            var calendarBaseLabel: UILabel = UILabel()
+            let calendarBaseLabel: UILabel = UILabel()
             
             //X座標の値をCGFloat型へ変換して設定
             calendarBaseLabel.frame = CGRectMake(
@@ -239,19 +239,19 @@ class ViewController: UIViewController {
         
         //タグナンバーとトータルカウントの定義
         var tagNumber = 1
-        var total     = 42
+        let total     = 42
         
         //7×6=42個のボタン要素を作る
         for i in 0...41{
             
             //配置場所の定義
-            var positionX   = calendarIntervalX + calendarX * (i % 7)
-            var positionY   = calendarIntervalY + calendarY * (i / 7)
-            var buttonSizeX = calendarSize;
-            var buttonSizeY = calendarSize;
+            let positionX   = calendarIntervalX + calendarX * (i % 7)
+            let positionY   = calendarIntervalY + calendarY * (i / 7)
+            let buttonSizeX = calendarSize;
+            let buttonSizeY = calendarSize;
             
             //ボタンをつくる
-            var button: UIButton = UIButton()
+            let button: UIButton = UIButton()
             button.frame = CGRectMake(
                 CGFloat(positionX),
                 CGFloat(positionY),
@@ -325,14 +325,14 @@ class ViewController: UIViewController {
          * yyyy年mm月1日のデータを作成する。
          * 後述の関数 setupPrevCalendarData, setupNextCalendarData も同様です。
          *************/
-        var currentCalendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        var currentComps: NSDateComponents = NSDateComponents()
+        let currentCalendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let currentComps: NSDateComponents = NSDateComponents()
         
         currentComps.year  = year
         currentComps.month = month
         currentComps.day   = 1
         
-        var currentDate: NSDate = currentCalendar.dateFromComponents(currentComps)!
+        let currentDate: NSDate = currentCalendar.dateFromComponents(currentComps)!
         recreateCalendarParameter(currentCalendar, currentDate: currentDate)
     }
     
@@ -348,14 +348,14 @@ class ViewController: UIViewController {
         }
         
         //setupCurrentCalendarData()と同様の処理を行う
-        var prevCalendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        var prevComps: NSDateComponents = NSDateComponents()
+        let prevCalendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let prevComps: NSDateComponents = NSDateComponents()
         
         prevComps.year  = year
         prevComps.month = month
         prevComps.day   = 1
         
-        var prevDate: NSDate = prevCalendar.dateFromComponents(prevComps)!
+        let prevDate: NSDate = prevCalendar.dateFromComponents(prevComps)!
         recreateCalendarParameter(prevCalendar, currentDate: prevDate)
     }
     
@@ -371,14 +371,14 @@ class ViewController: UIViewController {
         }
         
         //setupCurrentCalendarData()と同様の処理を行う
-        var nextCalendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        var nextComps: NSDateComponents = NSDateComponents()
+        let nextCalendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let nextComps: NSDateComponents = NSDateComponents()
         
         nextComps.year  = year
         nextComps.month = month
         nextComps.day   = 1
         
-        var nextDate: NSDate = nextCalendar.dateFromComponents(nextComps)!
+        let nextDate: NSDate = nextCalendar.dateFromComponents(nextComps)!
         recreateCalendarParameter(nextCalendar, currentDate: nextDate)
     }
     
@@ -386,16 +386,16 @@ class ViewController: UIViewController {
     func recreateCalendarParameter(currentCalendar: NSCalendar, currentDate: NSDate) {
         
         //引数で渡されたものをもとに日付の情報を取得する
-        var currentRange: NSRange = currentCalendar.rangeOfUnit(NSCalendarUnit.CalendarUnitDay, inUnit:NSCalendarUnit.CalendarUnitMonth, forDate:currentDate)
+        let currentRange: NSRange = currentCalendar.rangeOfUnit(NSCalendarUnit.Day, inUnit:NSCalendarUnit.Month, forDate:currentDate)
         
-        comps = currentCalendar.components(NSCalendarUnit.CalendarUnitYear|NSCalendarUnit.CalendarUnitMonth|NSCalendarUnit.CalendarUnitDay|NSCalendarUnit.CalendarUnitWeekday,fromDate:currentDate)
+        comps = currentCalendar.components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Weekday],fromDate:currentDate)
         
         //年月日と最後の日付と曜日を取得(NSIntegerをintへのキャスト不要)
-        var currentYear: NSInteger      = comps.year
-        var currentMonth: NSInteger     = comps.month
-        var currentDay: NSInteger       = comps.day
-        var currentDayOfWeek: NSInteger = comps.weekday
-        var currentMax: NSInteger       = currentRange.length
+        let currentYear: NSInteger      = comps.year
+        let currentMonth: NSInteger     = comps.month
+        let currentDay: NSInteger       = comps.day
+        let currentDayOfWeek: NSInteger = comps.weekday
+        let currentMax: NSInteger       = currentRange.length
         
         year      = currentYear
         month     = currentMonth
@@ -430,7 +430,7 @@ class ViewController: UIViewController {
         //@todo:画面遷移等の処理を書くことができます。
         
         //コンソール表示
-        println("\(year)年\(month)月\(button.tag)日が選択されました！")
+        print("\(year)年\(month)月\(button.tag)日が選択されました！")
     }
     
     //前の月のボタンを押した際のアクション
