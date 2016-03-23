@@ -271,7 +271,7 @@ class ViewController: UIViewController {
                 //日付の入る部分はボタンのタグを設定する（日にち）
                 button.setTitle(String(tagNumber), forState: .Normal)
                 button.tag = tagNumber
-                tagNumber++
+                tagNumber += 1
                 
             }else if(i == dayOfWeek + maxDay - 1 || i < total){
                 
@@ -302,7 +302,7 @@ class ViewController: UIViewController {
             button.layer.cornerRadius = CGFloat(buttonRadius)
             
             //配置したボタンに押した際のアクションを設定する
-            button.addTarget(self, action: "buttonTapped:", forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(ViewController.buttonTapped(_:)), forControlEvents: .TouchUpInside)
             
             //ボタンを配置する
             self.view.addSubview(button)
