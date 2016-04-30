@@ -241,6 +241,10 @@ class ViewController: UIViewController {
         var tagNumber = 1
         let total     = 42
         
+        //祝祭日判定フラグ
+        var holidayFunc = JapaneseHolidayLogic()
+        var holidayFlag = false
+
         //7×6=42個のボタン要素を作る
         for i in 0...41{
             
@@ -265,25 +269,30 @@ class ViewController: UIViewController {
                 //日付の入らない部分はボタンを押せなくする
                 button.setTitle("", forState: .Normal)
                 button.enabled = false
+                holidayFlag = false
                 
             }else if(i == dayOfWeek - 1 || i < dayOfWeek + maxDay - 1){
                 
                 //日付の入る部分はボタンのタグを設定する（日にち）
                 button.setTitle(String(tagNumber), forState: .Normal)
+
+                //祝祭日の判定を行う
+                holidayFlag = holidayFunc.judgeJapaneseHoliday(year, month: month, day: tagNumber, weekdayIndex: i % 7)
+
                 button.tag = tagNumber
                 tagNumber += 1
-                
+
             }else if(i == dayOfWeek + maxDay - 1 || i < total){
                 
                 //日付の入らない部分はボタンを押せなくする
                 button.setTitle("", forState: .Normal)
                 button.enabled = false
-                
+                holidayFlag = false
             }
             
             //ボタンの配色の設定
             //@remark:このサンプルでは正円のボタンを作っていますが、背景画像の設定等も可能です。
-            if(i % 7 == 0){
+            if(i % 7 == 0 || holidayFlag == true){
                 calendarBackGroundColor = UIColor(
                     red: CGFloat(0.831), green: CGFloat(0.349), blue: CGFloat(0.224), alpha: CGFloat(1.0)
                 )
