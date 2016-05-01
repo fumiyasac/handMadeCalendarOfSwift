@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         let screenHeight = DeviseSize.screenHeight()
         
         //iPhone4s
-        if(screenWidth == 320 && screenHeight == 480){
+        if (screenWidth == 320 && screenHeight == 480) {
             
             calendarLabelIntervalX = 5;
             calendarLabelX         = 45;
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
             calendarFontSize       = 17;
             
         //iPhone5またはiPhone5s
-        }else if (screenWidth == 320 && screenHeight == 568){
+        } else if (screenWidth == 320 && screenHeight == 568) {
             
             calendarLabelIntervalX = 5;
             calendarLabelX         = 45;
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
             calendarFontSize       = 17;
             
         //iPhone6
-        }else if (screenWidth == 375 && screenHeight == 667){
+        } else if (screenWidth == 375 && screenHeight == 667) {
             
             calendarLabelIntervalX = 15;
             calendarLabelX         = 50;
@@ -122,7 +122,7 @@ class ViewController: UIViewController {
             self.nextMonthButton.frame = CGRectMake(314, 438, CGFloat(calendarSize), CGFloat(calendarSize));
             
         //iPhone6 plus
-        }else if (screenWidth == 414 && screenHeight == 736){
+        } else if (screenWidth == 414 && screenHeight == 736) {
             
             calendarLabelIntervalX = 15;
             calendarLabelX         = 55;
@@ -189,7 +189,7 @@ class ViewController: UIViewController {
         
         let calendarLabelCount = 7
         
-        for i in 0...6{
+        for i in 0...6 {
             
             //ラベルを作成
             let calendarBaseLabel: UILabel = UILabel()
@@ -203,7 +203,7 @@ class ViewController: UIViewController {
             )
             
             //日曜日の場合は赤色を指定
-            if(i == 0){
+            if (i == 0) {
                 
                 //RGBカラーの設定は小数値をCGFloat型にしてあげる
                 calendarBaseLabel.textColor = UIColor(
@@ -211,7 +211,7 @@ class ViewController: UIViewController {
                 )
             
             //土曜日の場合は青色を指定
-            }else if(i == 6){
+            } else if(i == 6) {
                 
                 //RGBカラーの設定は小数値をCGFloat型にしてあげる
                 calendarBaseLabel.textColor = UIColor(
@@ -219,7 +219,7 @@ class ViewController: UIViewController {
                 )
                 
             //平日の場合は灰色を指定
-            }else{
+            } else {
                 
                 //既に用意されている配色パターンの場合
                 calendarBaseLabel.textColor = UIColor.lightGrayColor()
@@ -235,13 +235,13 @@ class ViewController: UIViewController {
     }
     
     //カレンダーを生成する関数
-    func generateCalendar(){
+    func generateCalendar() {
         
         //タグナンバーとトータルカウントの定義
         var tagNumber = 1
         let total     = 42
         
-        //祝祭日判定フラグ
+        //祝祭日のメソッドを定義した祝祭日判定フラグ
         var holidayFunc = JapaneseHolidayLogic()
         var holidayFlag = false
 
@@ -264,14 +264,14 @@ class ViewController: UIViewController {
             );
             
             //ボタンの初期設定をする
-            if(i < dayOfWeek - 1){
+            if (i < dayOfWeek - 1) {
                 
                 //日付の入らない部分はボタンを押せなくする
                 button.setTitle("", forState: .Normal)
                 button.enabled = false
                 holidayFlag = false
                 
-            }else if(i == dayOfWeek - 1 || i < dayOfWeek + maxDay - 1){
+            } else if (i == dayOfWeek - 1 || i < dayOfWeek + maxDay - 1) {
                 
                 //日付の入る部分はボタンのタグを設定する（日にち）
                 button.setTitle(String(tagNumber), forState: .Normal)
@@ -282,7 +282,7 @@ class ViewController: UIViewController {
                 button.tag = tagNumber
                 tagNumber += 1
 
-            }else if(i == dayOfWeek + maxDay - 1 || i < total){
+            } else if (i == dayOfWeek + maxDay - 1 || i < total) {
                 
                 //日付の入らない部分はボタンを押せなくする
                 button.setTitle("", forState: .Normal)
@@ -291,16 +291,17 @@ class ViewController: UIViewController {
             }
             
             //ボタンの配色の設定
+            //日曜日または祝祭日(振替休日) => 赤色, 土曜日 => 青色, 平日 => グレー色
             //@remark:このサンプルでは正円のボタンを作っていますが、背景画像の設定等も可能です。
-            if(i % 7 == 0 || holidayFlag == true){
+            if (i % 7 == 0 || holidayFlag == true) {
                 calendarBackGroundColor = UIColor(
                     red: CGFloat(0.831), green: CGFloat(0.349), blue: CGFloat(0.224), alpha: CGFloat(1.0)
                 )
-            }else if(i % 7 == 6){
+            } else if (i % 7 == 6) {
                 calendarBackGroundColor = UIColor(
                     red: CGFloat(0.400), green: CGFloat(0.471), blue: CGFloat(0.980), alpha: CGFloat(1.0)
                 )
-            }else{
+            } else {
                 calendarBackGroundColor = UIColor.lightGrayColor()
             }
             
@@ -349,10 +350,10 @@ class ViewController: UIViewController {
     func setupPrevCalendarData() {
         
         //現在の月に対して-1をする
-        if(month == 0){
+        if (month == 0) {
             year = year - 1;
             month = 12;
-        }else{
+        } else {
             month = month - 1;
         }
         
@@ -372,10 +373,10 @@ class ViewController: UIViewController {
     func setupNextCalendarData() {
         
         //現在の月に対して+1をする
-        if(month == 12){
+        if (month == 12) {
             year = year + 1;
             month = 1;
-        }else{
+        } else {
             month = month + 1;
         }
         
@@ -434,7 +435,7 @@ class ViewController: UIViewController {
     }
     
     //カレンダーボタンをタップした時のアクション
-    func buttonTapped(button: UIButton){
+    func buttonTapped(button: UIButton) {
         
         //@todo:画面遷移等の処理を書くことができます。
         
