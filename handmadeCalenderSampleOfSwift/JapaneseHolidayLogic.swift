@@ -115,7 +115,7 @@ struct JapaneseHolidayLogic {
             return true
 
         //4月30日: 振替休日
-        case (_, month, day, weekdayIndex) where (year > 1948 && month == 4 && day == 30 && weekdayIndex == 1):
+        case (year, month, day, weekdayIndex) where (year > 1948 && month == 4 && day == 30 && weekdayIndex == 1):
             return true
 
         //5月3日: 1949年から憲法記念日
@@ -179,7 +179,7 @@ struct JapaneseHolidayLogic {
             return true
 
         //11月4日: 振替休日
-        case (_, month, day, weekdayIndex) where (year > 1947 && month == 11 && day == 4 && weekdayIndex == 1):
+        case (year, month, day, weekdayIndex) where (year > 1947 && month == 11 && day == 4 && weekdayIndex == 1):
             return true
 
         //11月23日: 1948年から勤労感謝の日
@@ -187,7 +187,7 @@ struct JapaneseHolidayLogic {
             return true
 
         //11月24日: 振替休日
-        case (_, month, day, weekdayIndex) where (year > 1947 && month == 11 && day == 24 && weekdayIndex == 1):
+        case (year, month, day, weekdayIndex) where (year > 1947 && month == 11 && day == 24 && weekdayIndex == 1):
             return true
 
         //12月23日: 1989年から天皇誕生日
@@ -195,7 +195,7 @@ struct JapaneseHolidayLogic {
             return true
 
         //12月24日: 振替休日
-        case (_, month, day, weekdayIndex) where (year > 1989 && month == 12 && day == 24 && weekdayIndex == 1):
+        case (year, month, day, weekdayIndex) where (year > 1989 && month == 12 && day == 24 && weekdayIndex == 1):
             return true
 
         //※昔の祝日はこちら
