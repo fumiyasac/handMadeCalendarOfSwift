@@ -47,7 +47,7 @@ struct JapaneseHolidayLogic {
         } else {
 
             //ゴールデンウィークの振替休日である
-            if (month == 5 && day == 6 && self.getGoldenWeekAlterHoliday(weekdayIndex)) {
+            if (month == 5 && day == 6 && self.getGoldenWeekAlterHoliday(year, weekdayIndex: weekdayIndex)) {
 
                 return true
 
@@ -239,12 +239,12 @@ struct JapaneseHolidayLogic {
     /**
      *
      * コールデンウィークの振替休日を判定する
-     * 5/6が月・火・水(5/3 or 5/4 or 5/5が日曜日)なら5/6を祝日とする
+     * 2007年以降で5/6が月・火・水(5/3 or 5/4 or 5/5が日曜日)なら5/6を祝日とする
      *
      */
-    private func getGoldenWeekAlterHoliday(weekdayIndex: Int) -> Bool {
+    private func getGoldenWeekAlterHoliday(year: Int, weekdayIndex: Int) -> Bool {
 
-        if (weekdayIndex > 0 && 3 > weekdayIndex) {
+        if ((year > 2006) && (weekdayIndex > 0 && 3 > weekdayIndex)) {
             return true
         } else {
             return false
