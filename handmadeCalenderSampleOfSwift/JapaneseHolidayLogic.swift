@@ -122,7 +122,10 @@ struct JapaneseHolidayLogic {
         case (year, month, day, _) where (year > 1948 && month == 5 && day == 3):
             return true
 
-        //5月4日: 1988年から2006年まで国民の休日、2007年以降はみどりの日
+        //5月4日: (1)1988年以前は振替休日、(2).1988年から2006年まで国民の休日、2007年以降はみどりの日
+        case (year, month, day, weekdayIndex) where (year < 1988 && month == 5 && day == 4 && weekdayIndex == 1):
+            return true
+
         case (year, month, day, weekdayIndex) where ((year > 1987 && year < 2007) && month == 5 && day == 4 && weekdayIndex > 1):
             return true
 
