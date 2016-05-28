@@ -15,7 +15,7 @@
 		DEA538AA1A2A0AE40092DCBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEA538A91A2A0AE40092DCBA /* Images.xcassets */; };
 		DEA538AD1A2A0AE40092DCBA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA538AB1A2A0AE40092DCBA /* LaunchScreen.xib */; };
 		DEA538B91A2A0AE40092DCBA /* handmadeCalenderSampleOfSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA538B81A2A0AE40092DCBA /* handmadeCalenderSampleOfSwiftTests.swift */; };
-		DEAA90ED1CD535C3003E20C1 /* JapaneseHolidayLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA90EC1CD535C3003E20C1 /* JapaneseHolidayLogic.swift */; };
+		DEAA90ED1CD535C3003E20C1 /* CalculateCalendarLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA90EC1CD535C3003E20C1 /* CalculateCalendarLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,7 @@
 		DEA538B21A2A0AE40092DCBA /* handmadeCalenderSampleOfSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = handmadeCalenderSampleOfSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEA538B71A2A0AE40092DCBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEA538B81A2A0AE40092DCBA /* handmadeCalenderSampleOfSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = handmadeCalenderSampleOfSwiftTests.swift; sourceTree = "<group>"; };
-		DEAA90EC1CD535C3003E20C1 /* JapaneseHolidayLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JapaneseHolidayLogic.swift; sourceTree = "<group>"; };
+		DEAA90EC1CD535C3003E20C1 /* CalculateCalendarLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateCalendarLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				DEA538A21A2A0AE30092DCBA /* AppDelegate.swift */,
-				DEAA90EC1CD535C3003E20C1 /* JapaneseHolidayLogic.swift */,
+				DEAA90EC1CD535C3003E20C1 /* CalculateCalendarLogic.swift */,
 				DE3BE56E1A5EDA2700C49B3C /* DeviseSize.swift */,
 				DEA538A41A2A0AE30092DCBA /* ViewController.swift */,
 				DEA538A61A2A0AE40092DCBA /* Main.storyboard */,
@@ -224,7 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEAA90ED1CD535C3003E20C1 /* JapaneseHolidayLogic.swift in Sources */,
+				DEAA90ED1CD535C3003E20C1 /* CalculateCalendarLogic.swift in Sources */,
 				DEA538A51A2A0AE30092DCBA /* ViewController.swift in Sources */,
 				DEA538A31A2A0AE30092DCBA /* AppDelegate.swift in Sources */,
 				DE3BE56F1A5EDA2800C49B3C /* DeviseSize.swift in Sources */,
