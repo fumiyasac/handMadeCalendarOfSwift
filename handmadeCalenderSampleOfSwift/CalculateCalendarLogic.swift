@@ -77,7 +77,7 @@ public struct CalculateCalendarLogic {
     /**
      *
      * 祝日になる日を判定する
-     * (引数) year: Int, month: Int, day: Int, weekdayIndex: Int
+     * (引数) year: Int, month: Int, day: Int
      * weekdayIndexはWeekdayのenumに該当する値(0...6)が入る
      * ※1. カレンダーロジックの参考：http://p-ho.net/index.php?page=2s2
      * ※2. 書き方（タプル）の参考：http://blog.kitoko552.com/entry/2015/06/17/213553
@@ -245,7 +245,7 @@ public struct CalculateCalendarLogic {
         case (year, 12, 24, .Mon) where year > 1989:
             return true
             
-            //※昔の祝日はこちら
+        //※昔の祝日はこちら
         //4月10日: 1959年だけ皇太子明仁親王の結婚の儀
         case (year, 4, 10, _) where year == 1959:
             return true

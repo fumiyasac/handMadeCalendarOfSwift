@@ -242,8 +242,8 @@ class ViewController: UIViewController {
         let total     = 42
         
         //祝祭日のメソッドを定義した祝祭日判定フラグ
-        let holidayFunc = CalculateCalendarLogic()
-        var holidayFlag = false
+        let holidayObject = CalculateCalendarLogic()
+        var holidayFlag: Bool = false
 
         //7×6=42個のボタン要素を作る
         for i in 0...41{
@@ -277,7 +277,7 @@ class ViewController: UIViewController {
                 button.setTitle(String(tagNumber), forState: .Normal)
 
                 //祝祭日の判定を行う
-                holidayFlag = holidayFunc.judgeJapaneseHoliday(year, month: month, day: tagNumber)
+                holidayFlag = holidayObject.judgeJapaneseHoliday(year, month: month, day: tagNumber)
 
                 button.tag = tagNumber
                 tagNumber += 1

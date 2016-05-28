@@ -72,24 +72,34 @@ button.layer.cornerRadius = 22.5
 （このサンプルでは日本の祝祭日を全て計算値で行っています。また2000年以前の昔の祝日やハッピーマンデー法も考慮しています）
 
 ```
-/* JapaneseHolidayLogic.swift */
-mutating func judgeJapaneseHoliday(year: Int, month: Int, day: Int, weekdayIndex: Int) -> Bool {
+/* CalculateCalendarLogic.swift */
+public func judgeJapaneseHoliday(year: Int, month: Int, day: Int) -> Bool {
 
-    //このメソッド内では年・月・日・曜日を引数にとり、calculateJapaneseHolidayメソッドで祝祭日の判定をしています。
-    //※ゴールデンウィークの振替休日とシルバーウィークの国民の休日についてはこのメソッド内で判断する
-    //曜日の定義については(0:日曜日, 1:月曜日, 2:火曜日, 3:水曜日, 4:木曜日, 5:金曜日, 6:金曜日)としています。
-    //※曜日の定義についてはこのファイル内のenum参照
+    /**
+     *
+     * 祝日になる日を判定する
+     * (引数) year: Int, month: Int, day: Int
+     * weekdayIndexはWeekdayのenumに該当する値(0...6)が入る
+     * ※1. カレンダーロジックの参考：http://p-ho.net/index.php?page=2s2
+     * ※2. 書き方（タプル）の参考：http://blog.kitoko552.com/entry/2015/06/17/213553
+     * ※3. [Swift] 関数における引数/戻り値とタプルの関係：http://dev.classmethod.jp/smartphone/swift-function-tupsle/
+     *
+     */
+
+     // 実装は実際のクラスを参照して頂ければ幸いです。
 }
 
 /* ViewController.swift */
 //structのインスタンスを作成
-var holiday = JapaneseHolidayLogic()
+let holidayObject = CalculateCalendarLogic()
+var holidayFlag: Bool = false
 
 ...
 
 //使用する際は引数を入れての判定を行う
-let a: Bool = test.judgeJapaneseHoliday(2016, month: 1, day: 1, weekdayIndex: Weekday.Fri.rawValue)
-print("2016年1月1日（金曜日）：\(a)") ==> 2016年1月1日（金曜日）：true
+holidayFlag = holidayObject.judgeJapaneseHoliday(2016, month: 1, day: 1)
+//年と月と日を引数に設定するだけでその日が祝日であるかを判定してくれます。
+print("2016年1月1日：\(holidayFlag)") ==> 2016年1月1日：true
 ```
 
 ### ■ ライセンス等
