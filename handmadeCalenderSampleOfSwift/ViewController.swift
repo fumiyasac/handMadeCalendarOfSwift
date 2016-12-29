@@ -277,7 +277,7 @@ class ViewController: UIViewController {
                 button.setTitle(String(tagNumber), for: UIControlState())
 
                 //祝祭日の判定を行う
-                holidayFlag = holidayObject.judgeJapaneseHoliday(year, month: month, day: tagNumber)
+                holidayFlag = holidayObject.judgeJapaneseHoliday(year: year, month: month, day: tagNumber)
 
                 button.tag = tagNumber
                 tagNumber += 1
