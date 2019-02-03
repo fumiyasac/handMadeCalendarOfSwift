@@ -6,6 +6,8 @@
 //  Copyright (c) 2014年 just1factory. All rights reserved.
 //
 
+// TODO: 改めてレイアウトをちゃんと作り直す
+
 import UIKit
 
 //CALayerクラスのインポート
@@ -100,7 +102,7 @@ class ViewController: UIViewController {
             calendarFontSize       = 17;
             
         //iPhone6またはiPhone6sまたはiPhone7
-        } else if screenWidth == 375 && screenHeight == 667 {
+        } else if screenWidth == 375 {
             
             calendarLabelIntervalX = 15;
             calendarLabelX         = 50;
@@ -122,7 +124,7 @@ class ViewController: UIViewController {
             self.nextMonthButton.frame = CGRect(x: 314, y: 438, width: calendarSize, height: calendarSize)
             
         //iPhone6+またはiPhone6s+またはiPhone7s+
-        } else if screenWidth == 414 && screenHeight == 736 {
+        } else if screenWidth == 414 {
             
             calendarLabelIntervalX = 15;
             calendarLabelX         = 55;
@@ -267,14 +269,14 @@ class ViewController: UIViewController {
             if i < dayOfWeek - 1 {
                 
                 //日付の入らない部分はボタンを押せなくする
-                button.setTitle("", for: UIControlState())
+                button.setTitle("", for: UIControl.State())
                 button.isEnabled = false
                 holidayFlag = false
                 
             } else if i == dayOfWeek - 1 || i < dayOfWeek + maxDay - 1 {
                 
                 //日付の入る部分はボタンのタグを設定する（日にち）
-                button.setTitle(String(tagNumber), for: UIControlState())
+                button.setTitle(String(tagNumber), for: UIControl.State())
 
                 //祝祭日の判定を行う
                 holidayFlag = holidayObject.judgeJapaneseHoliday(year: year, month: month, day: tagNumber)
@@ -285,7 +287,7 @@ class ViewController: UIViewController {
             } else if i == dayOfWeek + maxDay - 1 || i < total {
                 
                 //日付の入らない部分はボタンを押せなくする
-                button.setTitle("", for: UIControlState())
+                button.setTitle("", for: UIControl.State())
                 button.isEnabled = false
                 holidayFlag = false
             }
@@ -307,7 +309,7 @@ class ViewController: UIViewController {
             
             //ボタンのデザインを決定する
             button.backgroundColor = calendarBackGroundColor
-            button.setTitleColor(UIColor.white, for: UIControlState())
+            button.setTitleColor(UIColor.white, for: UIControl.State())
             button.titleLabel!.font = UIFont(name: "System", size: CGFloat(calendarFontSize))
             button.layer.cornerRadius = CGFloat(buttonRadius)
             
@@ -435,7 +437,7 @@ class ViewController: UIViewController {
     }
     
     //カレンダーボタンをタップした時のアクション
-    func buttonTapped(_ button: UIButton) {
+    @objc func buttonTapped(_ button: UIButton) {
         
         //@todo:画面遷移等の処理を書くことができます。
         
